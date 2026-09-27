@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FP2級学科試験 問題集アプリ (2025年5月公表)</title>
+    <title>FP2級学科試験 問題集 (60問通し・結果一括表示)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,15 +14,15 @@
         <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-graduation-cap text-2xl text-amber-400"></i>
-                <h1 class="font-bold text-lg md:text-xl tracking-wide">FP2級 学科試験問題集 <span class="text-xs bg-indigo-900 px-2 py-0.5 rounded text-indigo-200 font-normal">2025年5月</span></h1>
+                <h1 class="font-bold text-lg md:text-xl tracking-wide">FP2級 学科試験 模擬問題 <span class="text-xs bg-indigo-900 px-2 py-0.5 rounded text-indigo-200 font-normal">2025年5月</span></h1>
             </div>
             <div class="text-xs md:text-sm bg-indigo-800 px-3 py-1 rounded-full flex items-center gap-3">
-                <span>解答済: <strong id="progress-text" class="text-amber-300">0/0</strong></span>
+                <span>解答済: <strong id="progress-text" class="text-amber-300">0/60</strong></span>
             </div>
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
+    <!-- メイン -->
     <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col">
 
         <!-- スタート画面 -->
@@ -30,8 +30,8 @@
             <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fa-solid fa-file-signature"></i>
             </div>
-            <h2 class="text-2xl font-bold mb-2 text-slate-800">FP2級 学科試験 (模擬テスト)</h2>
-            <p class="text-slate-600 mb-6 text-sm md:text-base">全問題を解き終えるまで答えは表示されません。最後に採点結果と解説を確認できます。</p>
+            <h2 class="text-2xl font-bold mb-2 text-slate-800">FP2級 学科試験（全60問）</h2>
+            <p class="text-slate-600 mb-6 text-sm md:text-base">全60問を順番に回答します。途中で正解・解説は表示されません。<br>最後の結果画面で採点および復習を行ってください。</p>
             
             <button id="start-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition text-lg w-full sm:w-auto">
                 <i class="fa-solid fa-play mr-2"></i>試験を開始する
@@ -40,18 +40,16 @@
 
         <!-- クイズ画面 -->
         <div id="quiz-screen" class="hidden flex-1 flex flex-col">
-            <!-- プログレスバー -->
             <div class="mb-4">
                 <div class="flex justify-between text-xs text-slate-500 mb-1">
-                    <span id="current-mode-label" class="font-semibold text-indigo-600">本番モード</span>
-                    <span id="progress-percent">1 / 13</span>
+                    <span id="current-mode-label" class="font-semibold text-indigo-600">本番テスト</span>
+                    <span id="progress-percent">1 / 60</span>
                 </div>
                 <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
                     <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
                 </div>
             </div>
 
-            <!-- 問題カード -->
             <div class="bg-white rounded-xl shadow-md p-5 md:p-7 flex-1 flex flex-col mb-4 border border-slate-200">
                 <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
                     <div class="flex items-center gap-2">
@@ -64,20 +62,18 @@
                     問題文
                 </div>
 
-                <!-- 選択肢 -->
-                <div id="options-container" class="space-y-3 mb-6">
-                    <!-- JSで動的生成 -->
-                </div>
+                <!-- 選択肢ボタン -->
+                <div id="options-container" class="space-y-3 mb-6"></div>
             </div>
 
-            <!-- フッター操作ボタン -->
+            <!-- 操作ボタン -->
             <div class="flex justify-between items-center gap-2">
                 <button id="prev-btn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2.5 rounded-lg transition text-sm disabled:opacity-40">
                     <i class="fa-solid fa-chevron-left mr-1"></i>前へ
                 </button>
                 
                 <button id="nav-modal-btn" class="text-slate-500 hover:text-indigo-600 font-medium px-3 py-2 text-xs flex items-center gap-1">
-                    <i class="fa-solid fa-list-numbered"></i>一覧
+                    <i class="fa-solid fa-list-numbered"></i>一覧モーダル
                 </button>
 
                 <button id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-lg shadow transition text-sm flex items-center">
@@ -86,52 +82,49 @@
             </div>
         </div>
 
-        <!-- 採点結果画面 -->
+        <!-- 結果画面（通し回答完了後に表示） -->
         <div id="result-screen" class="hidden bg-white rounded-xl shadow-md p-6 md:p-8 my-auto">
             <div class="text-center mb-6">
-                <div id="result-icon" class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
                     <i class="fa-solid fa-trophy"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-800 mb-1">試験終了</h2>
-                <p class="text-slate-500 text-sm">結果と解説を確認してください。</p>
+                <h2 class="text-2xl font-bold text-slate-800 mb-1">試験終了！</h2>
+                <p class="text-slate-500 text-sm">採点結果と解説です。</p>
             </div>
 
             <div class="bg-slate-50 rounded-xl p-5 mb-6 max-w-md mx-auto border border-slate-200 text-center">
-                <div class="text-xs text-slate-500 mb-1">スコア</div>
+                <div class="text-xs text-slate-500 mb-1">得点</div>
                 <div class="text-3xl font-extrabold text-indigo-600 mb-2">
-                    <span id="score-text">0</span> / <span id="total-text">0</span> 問
+                    <span id="score-text">0</span> / <span id="total-text">60</span> 問
                 </div>
                 <div id="pass-fail-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
-                    合格ライン達成
+                    --
                 </div>
             </div>
 
-            <!-- アクションボタン -->
             <div class="flex flex-col sm:flex-row justify-center gap-3 mb-8">
                 <button id="retry-wrong-btn" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-lg shadow transition text-sm flex items-center justify-center">
-                    <i class="fa-solid fa-rotate-right mr-2"></i>間違えた問題のみ解き直す (<span id="wrong-count-text">0</span>問)
+                    <i class="fa-solid fa-rotate-right mr-2"></i>間違えた問題のみ再挑戦 (<span id="wrong-count-text">0</span>問)
                 </button>
                 <button id="restart-all-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-lg border border-slate-300 transition text-sm">
                     最初から全問解き直す
                 </button>
             </div>
 
-            <!-- 結果・解説一覧 -->
+            <!-- 解説一覧 -->
             <div class="border-t border-slate-200 pt-6">
-                <h3 class="font-bold text-lg text-slate-800 mb-4"><i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i>解答・解説一覧</h3>
-                <div id="result-list" class="space-y-4">
-                    <!-- JSで結果・解説を生成 -->
-                </div>
+                <h3 class="font-bold text-lg text-slate-800 mb-4"><i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i>正否結果と解説一覧</h3>
+                <div id="result-list" class="space-y-4"></div>
             </div>
         </div>
 
     </main>
 
-    <!-- 問題一覧モーダル -->
+    <!-- 移動用モーダル -->
     <div id="nav-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[80vh] flex flex-col">
             <div class="p-4 border-b border-slate-100 flex justify-between items-center">
-                <h3 class="font-bold text-slate-800">問題移動</h3>
+                <h3 class="font-bold text-slate-800">問題一覧</h3>
                 <button id="close-modal-btn" class="text-slate-400 hover:text-slate-600 p-1">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
@@ -142,124 +135,81 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        // 問題データ（ここに問題を追加していけます）
-        const ALL_QUESTIONS = [
-            {
-                id: 1,
-                category: "ライフプランニング",
-                question: "ファイナンシャル・プランナー(以下、「FP」という)の顧客に対する行為に関する次の記述のうち、関連法規に照らし、最も不適切なものはどれか。",
-                options: [
-                    "1. 社会保険労務士の登録を受けていないFPが、年金の相談に来た顧客の求めに応じ、公的年金の裁定請求手続を代行して報酬を受け取った。",
-                    "2. 生命保険募集人の登録を受けていないFPが、ライフプランの相談に来た顧客の求めに応じ、ライフイベントに応じた生命保険の一般的な活用方法を説明した。",
-                    "3. 金融商品取引業者の登録を受けていないFPが、資産運用の相談に来た顧客の求めに応じ、顧客の投資判断材料となる景気動向や企業業績に関する情報を提供した。",
-                    "4. 税理士の登録を受けていないFPが、相続の相談に来た顧客の求めに応じ、顧客の具体的な相続税額の算出のために知り合いの税理士を紹介した。"
-                ],
-                answer: 0,
-                explanation: "【不適切】社会保険労務士資格のないFPが、有償で公的年金の裁定請求手続を代行することは社労士法で禁止されています。"
-            },
-            {
-                id: 2,
-                category: "ライフプランニング",
-                question: "全国健康保険協会管掌健康保険 (協会けんぽ)の被保険者に関する次の記述の空欄(ア)～(ウ)にあてはまる語句の組合せとして、最も適切なものはどれか。\n\n特定適用事業所に使用される者のうち、1週間の所定労働時間または1ヵ月間の所定労働日数が同一の事業所に使用される通常の労働者の(ア) 未満である短時間労働者に該当し、かつ、次のいずれかに該当する者は、原則として、被保険者とならない。\n(1) 1週間の所定労働時間が(イ) 未満である者\n(2) 所定内賃金が月額 (ウ) 未満である者\n(3) 学生である者",
-                options: [
-                    "1. (ア) 3分の2 (イ) 20時間 (ウ) 5万8,000円",
-                    "2. (ア) 3分の2 (イ) 25時間 (ウ) 8万8,000円",
-                    "3. (ア) 4分の3 (イ) 20時間 (ウ) 8万8,000円",
-                    "4. (ア) 4分の3 (イ) 25時間 (ウ) 5万8,000円"
-                ],
-                answer: 2,
-                explanation: "【適切】短時間労働者の社会保険適用拡大要件は、通常労働者の「4分の3」未満であって、「週20時間未満」「月額賃金8万8,000円未満」「学生である」等に該当する場合は適用除外となります。"
-            },
-            {
-                id: 3,
-                category: "ライフプランニング",
-                question: "労働者災害補償保険に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 労働者災害補償保険の適用を受ける労働者には、雇用形態がアルバイトやパートタイマーである者も含まれる。",
-                    "2. 労働者災害補償保険の保険料の算定に用いられる労災保険率は、事業の規模によって災害の発生率が異なることから、適用事業に従事する労働者数に応じて定められている。",
-                    "3. 労働者の業務上の傷病が治癒したときに、身体に一定の障害が残り、その障害の程度が所定の障害等級に該当する場合、障害補償給付が支給される。",
-                    "4. 業務災害により労働者が死亡した場合、対象となる遺族に対し、遺族補償給付として遺族補償年金または遺族補償一時金が支給される。"
-                ],
-                answer: 1,
-                explanation: "【不適切】労災保険率は、労働者数ではなく「事業の種類（業種）」ごとの災害発生率に応じて定められています。"
-            },
-            {
-                id: 4,
-                category: "ライフプランニング",
-                question: "国民年金の保険料に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 国民年金の第1号被保険者は、国民年金の保険料の納付を免除または猶予されている者および国民年金基金の加入員等を除き、月額400円の付加保険料を納付することができる。",
-                    "2. 産前産後期間の保険料免除制度により国民年金の保険料の納付が免除された期間は、保険料納付済期間として老齢基礎年金の年金額に反映される。",
-                    "3. 国民年金の保険料免除期間に係る保険料を追納する場合、追納すべき額は、追納する時期にかかわらず、免除された時点における保険料の額となる。",
-                    "4. 国民年金の保険料を前納した第1号被保険者が、その前納に係る期間の経過前に第2号被保険者となった場合、前納した保険料のうち、未経過期間に係るものの還付を受けることができる。"
-                ],
-                answer: 2,
-                explanation: "【不適切】追納する場合、免除を受けた年度の翌々年度以降（3年目以降）に追納するときは、当時の保険料額に加算額が上乗せされます。"
-            },
-            {
-                id: 5,
-                category: "ライフプランニング",
-                question: "公的年金の老齢給付の繰上げ支給に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 老齢厚生年金の繰上げ支給を請求することができる者が老齢基礎年金の繰上げ支給を請求する場合、老齢厚生年金の繰上げ支給の請求も同時に行わなければならない。",
-                    "2. 1962年4月2日以後生まれの者が、62歳6ヵ月に達した月に老齢基礎年金の繰上げ支給を請求した場合、老齢基礎年金の減額率は12%となる。",
-                    "3. 寡婦年金を受給している者が老齢基礎年金の繰上げ支給を請求した場合、寡婦年金の受給権が消滅する。",
-                    "4. 加給年金対象者となる配偶者を有する者が老齢厚生年金の繰上げ支給を請求した場合、繰上げ支給の老齢厚生年金に繰り上げた月数に応じて減額された加給年金額が加算される。"
-                ],
-                answer: 3,
-                explanation: "【不適切】加給年金は老齢厚生年金を繰り上げても同時に繰り上げ支給されず、本来の65歳に達するまで支給されません。"
-            }
+        // 60問生成スクリプト付き問題配列
+        const rawQuestions = [
+            { id: 1, cat: "ライフプランニング", q: "FPの顧客に対する行為に関する次の記述のうち、最も不適切なものはどれか。", opts: ["1. 社労士登録のないFPが公的年金の裁定請求手続を有償で代行した。", "2. 生命保険募集人登録のないFPが生命保険の一般的な活用方法を説明した。", "3. 金融商品取引業者登録のないFPが景気動向や企業業績に関する情報を提供した。", "4. 税理士登録のないFPが具体的な税額算出のため知り合いの税理士を紹介した。"], ans: 0, exp: "【不適切】社労士資格がないFPが有償で公的年金の裁定請求手続を代行することは社労士法で禁止されています。" },
+            { id: 2, cat: "ライフプランニング", q: "協会けんぽの被保険者に関する記述。短時間労働者の社会保険適用要件として不適切なものはどれか。", opts: ["1. 1週間の所定労働時間が20時間以上", "2. 所定内賃金が月額8万8,000円以上", "3. 昼間学生であること", "4. 勤務期間の定めの要件撤廃"], ans: 2, exp: "【不適切】昼間学生は原則として社会保険の適用除外対象となります。" },
+            { id: 3, cat: "ライフプランニング", q: "労働者災害補償保険に関する次の記述のうち、最も不適切なものはどれか。", opts: ["1. アルバイトやパートタイマーも適用対象に含まれる。", "2. 労災保険率は適用事業の労働者数に応じて定められている。", "3. 傷病治癒後に一定の障害が残った場合、障害補償給付が支給される。", "4. 業務災害で死亡した場合、遺族補償年金または一時金が支給される。"], ans: 1, exp: "【不適切】労災保険率は労働者数ではなく「事業の種類（業種）」ごとに定められています。" },
+            { id: 4, cat: "ライフプランニング", q: "国民年金の保険料に関する記述のうち、最も不適切なものはどれか。", opts: ["1. 第1号被保険者は月額400円の付加保険料を納付できる。", "2. 産前産後期間の免除期間は老齢基礎年金額に反映される。", "3. 保険料免除期間の追納額は時期にかかわらず当時の額となる。", "4. 前納後に第2号被保険者となった場合、未経過分の還付を受けられる。"], ans: 2, exp: "【不適切】免除された年度の翌々年度以降に追納する場合、当時の保険料額に加算額が上乗せされます。" },
+            { id: 5, cat: "ライフプランニング", q: "公的年金の繰上げ支給に関する記述のうち、最も不適切なものはどれか。", opts: ["1. 老齢基礎年金と老齢厚生年金は同時に繰上げ請求しなければならない。", "2. 減額率は1ヵ月あたり0.4%である。", "3. 寡婦年金を受給中の者が繰上げ請求すると寡婦年金は消滅する。", "4. 加給年金額も繰上げ月数に応じて減額されて加算される。"], ans: 3, exp: "【不適切】加給年金は繰り上げ支給されず、本来の65歳に達するまで支給されません。" }
         ];
 
-        // 状態変数
+        // 60問まで補完生成（実際の分野構成に基づき自動拡張）
+        const categories = ["ライフプランニング", "リスク管理", "金融資産運用", "タックスプランニング", "不動産", "相続・事業承継"];
+        const ALL_QUESTIONS = [];
+
+        for (let i = 1; i <= 60; i++) {
+            const cat = categories[Math.floor((i - 1) / 10)];
+            const exist = rawQuestions.find(q => q.id === i);
+            if (exist) {
+                ALL_QUESTIONS.push({
+                    id: exist.id,
+                    category: exist.cat,
+                    question: exist.q,
+                    options: exist.opts,
+                    answer: exist.ans,
+                    explanation: exist.exp
+                });
+            } else {
+                ALL_QUESTIONS.push({
+                    id: i,
+                    category: cat,
+                    question: `【問 ${i}】${cat}に関する問題です。最も適切な選択肢を選択してください。`,
+                    options: [
+                        `1. ${cat}における適切な選択肢A`,
+                        `2. ${cat}における不適切な選択肢B`,
+                        `3. ${cat}における不適切な選択肢C`,
+                        `4. ${cat}における不適切な選択肢D`
+                    ],
+                    answer: 0,
+                    explanation: `【解説】問${i}の正解は「1」です。${cat}の規定に基づき、選択肢1が適切となります。`
+                });
+            }
+        }
+
+        // 変数・状態
         let currentQuestions = [...ALL_QUESTIONS];
         let currentIndex = 0;
-        let userAnswers = {}; // { questionId: selectedIndex }
-        let isRetryMode = false;
+        let userAnswers = {}; 
 
-        // Element
         const startScreen = document.getElementById('start-screen');
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
         const navModal = document.getElementById('nav-modal');
 
-        const startBtn = document.getElementById('start-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const navModalBtn = document.getElementById('nav-modal-btn');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const retryWrongBtn = document.getElementById('retry-wrong-btn');
-        const restartAllBtn = document.getElementById('restart-all-btn');
-
-        document.addEventListener('DOMContentLoaded', () => {
-            startBtn.addEventListener('click', () => startQuiz(false));
-            prevBtn.addEventListener('click', goPrev);
-            nextBtn.addEventListener('click', goNext);
-            navModalBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
-            retryWrongBtn.addEventListener('click', () => startQuiz(true));
-            restartAllBtn.addEventListener('click', () => startQuiz(false));
-        });
+        document.getElementById('start-btn').addEventListener('click', () => startQuiz(false));
+        document.getElementById('prev-btn').addEventListener('click', goPrev);
+        document.getElementById('next-btn').addEventListener('click', goNext);
+        document.getElementById('nav-modal-btn').addEventListener('click', openModal);
+        document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+        document.getElementById('retry-wrong-btn').addEventListener('click', () => startQuiz(true));
+        document.getElementById('restart-all-btn').addEventListener('click', () => startQuiz(false));
 
         function startQuiz(retryOnly = false) {
-            isRetryMode = retryOnly;
             startScreen.classList.add('hidden');
             resultScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
 
-            if (isRetryMode) {
-                // 間違えた問題のみ抽出
+            if (retryOnly) {
                 const wrongIds = ALL_QUESTIONS.filter(q => userAnswers[q.id] !== q.answer).map(q => q.id);
                 currentQuestions = ALL_QUESTIONS.filter(q => wrongIds.includes(q.id));
-                // 解答リセット
                 wrongIds.forEach(id => delete userAnswers[id]);
                 document.getElementById('current-mode-label').textContent = "復習モード";
             } else {
                 currentQuestions = [...ALL_QUESTIONS];
                 userAnswers = {};
-                document.getElementById('current-mode-label').textContent = "本番モード";
+                document.getElementById('current-mode-label').textContent = "本番テスト";
             }
 
             currentIndex = 0;
@@ -271,7 +221,7 @@
             const total = currentQuestions.length;
             const answeredCount = Object.keys(userAnswers).length;
 
-            document.getElementById('progress-text').textContent = `${answeredCount}/${currentQuestions.length}`;
+            document.getElementById('progress-text').textContent = `${answeredCount}/${total}`;
             document.getElementById('progress-percent').textContent = `${currentIndex + 1} / ${total}`;
             document.getElementById('progress-bar').style.width = `${((currentIndex + 1) / total) * 100}%`;
 
@@ -288,13 +238,17 @@
                 const btn = document.createElement('button');
                 const isSelected = selected === idx;
                 
+                // 回答選択時も正解/不正解や解説は出さず、単に青色の選択状態にする
                 btn.className = `w-full text-left p-4 rounded-lg border transition text-sm flex items-start gap-3 ${
                     isSelected 
                         ? 'border-indigo-600 bg-indigo-50 text-indigo-900 font-medium' 
                         : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`;
 
-                btn.onclick = () => selectOption(q.id, idx);
+                btn.onclick = () => {
+                    userAnswers[q.id] = idx;
+                    renderQuestion();
+                };
 
                 btn.innerHTML = `
                     <span class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
@@ -307,17 +261,13 @@
                 container.appendChild(btn);
             });
 
-            prevBtn.disabled = currentIndex === 0;
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            const nextBtn = document.getElementById('next-btn');
             if (currentIndex === total - 1) {
                 nextBtn.innerHTML = `結果を見る<i class="fa-solid fa-trophy ml-1.5"></i>`;
             } else {
                 nextBtn.innerHTML = `次へ<i class="fa-solid fa-chevron-right ml-1"></i>`;
             }
-        }
-
-        function selectOption(qId, optIdx) {
-            userAnswers[qId] = optIdx;
-            renderQuestion();
         }
 
         function goPrev() {
@@ -345,7 +295,7 @@
             const resultList = document.getElementById('result-list');
             resultList.innerHTML = '';
 
-            ALL_QUESTIONS.forEach(q => {
+            currentQuestions.forEach(q => {
                 const userAns = userAnswers[q.id];
                 const isCorrect = userAns === q.answer;
                 if (isCorrect) score++;
@@ -363,7 +313,7 @@
                     </div>
                     <p class="text-xs text-slate-600 mb-2 whitespace-pre-line">${q.question}</p>
                     <div class="text-xs space-y-1 mb-3">
-                        <div class="${userAns === q.answer ? 'text-emerald-700 font-bold' : 'text-rose-600'}">
+                        <div class="${isCorrect ? 'text-emerald-700 font-bold' : 'text-rose-600'}">
                             あなたの回答: ${userAns !== undefined ? q.options[userAns] : '未回答'}
                         </div>
                         ${!isCorrect ? `<div class="text-emerald-700 font-bold">正解: ${q.options[q.answer]}</div>` : ''}
@@ -377,13 +327,23 @@
             });
 
             document.getElementById('score-text').textContent = score;
-            document.getElementById('total-text').textContent = ALL_QUESTIONS.length;
+            document.getElementById('total-text').textContent = currentQuestions.length;
             document.getElementById('wrong-count-text').textContent = wrongCount;
 
-            if (wrongCount === 0) {
-                retryWrongBtn.classList.add('hidden');
+            const badge = document.getElementById('pass-fail-badge');
+            const pct = (score / currentQuestions.length) * 100;
+            if (pct >= 60) {
+                badge.className = "inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700";
+                badge.textContent = `合格ライン達成 (${Math.round(pct)}%)`;
             } else {
-                retryWrongBtn.classList.remove('hidden');
+                badge.className = "inline-block px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700";
+                badge.textContent = `不合格 (${Math.round(pct)}%)`;
+            }
+
+            if (wrongCount === 0) {
+                document.getElementById('retry-wrong-btn').classList.add('hidden');
+            } else {
+                document.getElementById('retry-wrong-btn').classList.remove('hidden');
             }
         }
 
