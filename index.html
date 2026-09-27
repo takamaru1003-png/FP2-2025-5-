@@ -6,22 +6,6 @@
     <title>FP2級学科試験 問題集アプリ (2025年5月公表)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
 
@@ -32,8 +16,8 @@
                 <i class="fa-solid fa-graduation-cap text-2xl text-amber-400"></i>
                 <h1 class="font-bold text-lg md:text-xl tracking-wide">FP2級 学科試験問題集 <span class="text-xs bg-indigo-900 px-2 py-0.5 rounded text-indigo-200 font-normal">2025年5月</span></h1>
             </div>
-            <div id="header-stats" class="text-xs md:text-sm bg-indigo-800 px-3 py-1 rounded-full flex items-center gap-3">
-                <span>進捗: <strong id="progress-text" class="text-amber-300">0/60</strong></span>
+            <div class="text-xs md:text-sm bg-indigo-800 px-3 py-1 rounded-full flex items-center gap-3">
+                <span>解答済: <strong id="progress-text" class="text-amber-300">0/0</strong></span>
             </div>
         </div>
     </header>
@@ -41,25 +25,16 @@
     <!-- メインコンテンツ -->
     <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col">
 
-        <!-- アプリ概要 / スタート画面 -->
+        <!-- スタート画面 -->
         <div id="start-screen" class="bg-white rounded-xl shadow-md p-6 md:p-8 text-center my-auto">
             <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fa-solid fa-file-signature"></i>
             </div>
-            <h2 class="text-2xl font-bold mb-2 text-slate-800">FP2級 学科試験 (2025年5月公表分)</h2>
-            <p class="text-slate-600 mb-6 text-sm md:text-base">全60問の4肢選択式問題集です。試験終了後、間違えた問題だけに何度も再挑戦できます。</p>
+            <h2 class="text-2xl font-bold mb-2 text-slate-800">FP2級 学科試験 (模擬テスト)</h2>
+            <p class="text-slate-600 mb-6 text-sm md:text-base">全問題を解き終えるまで答えは表示されません。最後に採点結果と解説を確認できます。</p>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-lg mx-auto mb-8 text-left text-xs text-slate-600">
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問1〜10</span>ライフプランニング</div>
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問11〜20</span>リスク管理</div>
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問21〜30</span>金融資産運用</div>
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問31〜40</span>タックスプランニング</div>
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問41〜50</span>不動産</div>
-                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="font-bold text-indigo-600 block mb-1">問51〜60</span>相続・事業承継</div>
-            </div>
-
-            <button id="start-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition duration-200 text-lg w-full sm:w-auto">
-                <i class="fa-solid fa-play mr-2"></i>問題集をスタートする
+            <button id="start-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition text-lg w-full sm:w-auto">
+                <i class="fa-solid fa-play mr-2"></i>試験を開始する
             </button>
         </div>
 
@@ -68,8 +43,8 @@
             <!-- プログレスバー -->
             <div class="mb-4">
                 <div class="flex justify-between text-xs text-slate-500 mb-1">
-                    <span id="current-mode-label" class="font-semibold text-indigo-600">通常モード</span>
-                    <span id="progress-percent">0%</span>
+                    <span id="current-mode-label" class="font-semibold text-indigo-600">本番モード</span>
+                    <span id="progress-percent">1 / 13</span>
                 </div>
                 <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
                     <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
@@ -83,32 +58,21 @@
                         <span id="question-number" class="bg-indigo-100 text-indigo-800 text-sm font-bold px-3 py-1 rounded-full">問 1</span>
                         <span id="question-category" class="bg-slate-100 text-slate-600 text-xs px-2.5 py-1 rounded">分野</span>
                     </div>
-                    <span id="retry-badge" class="hidden bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium"><i class="fa-solid fa-rotate-right mr-1"></i>復習対象</span>
                 </div>
 
                 <div id="question-text" class="text-base md:text-lg font-medium text-slate-800 mb-6 leading-relaxed whitespace-pre-line">
-                    問題文がここに入ります。
+                    問題文
                 </div>
 
                 <!-- 選択肢 -->
                 <div id="options-container" class="space-y-3 mb-6">
-                    <!-- JSで選択肢を生成 -->
-                </div>
-
-                <!-- 解説エリア (回答後に表示) -->
-                <div id="explanation-box" class="hidden mt-auto bg-slate-50 rounded-lg p-4 border border-slate-200">
-                    <div id="result-status" class="font-bold text-base mb-2 flex items-center gap-2">
-                        <!-- 正解/不正解 のステータス -->
-                    </div>
-                    <div id="explanation-text" class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
-                        解説テキスト
-                    </div>
+                    <!-- JSで動的生成 -->
                 </div>
             </div>
 
             <!-- フッター操作ボタン -->
             <div class="flex justify-between items-center gap-2">
-                <button id="prev-btn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2.5 rounded-lg transition text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+                <button id="prev-btn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2.5 rounded-lg transition text-sm disabled:opacity-40">
                     <i class="fa-solid fa-chevron-left mr-1"></i>前へ
                 </button>
                 
@@ -116,76 +80,71 @@
                     <i class="fa-solid fa-list-numbered"></i>一覧
                 </button>
 
-                <button id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-lg shadow transition text-sm flex items-center disabled:opacity-40 disabled:cursor-not-allowed">
+                <button id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-lg shadow transition text-sm flex items-center">
                     次へ<i class="fa-solid fa-chevron-right ml-1"></i>
                 </button>
             </div>
         </div>
 
         <!-- 採点結果画面 -->
-        <div id="result-screen" class="hidden bg-white rounded-xl shadow-md p-6 md:p-8 text-center my-auto">
-            <div id="result-icon" class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-                <i class="fa-solid fa-trophy"></i>
-            </div>
-            <h2 class="text-2xl font-bold mb-1 text-slate-800">試験終了！</h2>
-            <p id="result-subtitle" class="text-slate-500 text-sm mb-6">お疲れ様でした。結果を確認しましょう。</p>
-
-            <div class="bg-slate-50 rounded-xl p-6 mb-6 max-w-md mx-auto border border-slate-200">
-                <div class="text-sm text-slate-500 mb-1">総合スコア</div>
-                <div class="text-4xl font-extrabold text-indigo-600 mb-2">
-                    <span id="score-text">0</span> <span class="text-lg font-normal text-slate-500">/ <span id="total-text">60</span>問</span>
+        <div id="result-screen" class="hidden bg-white rounded-xl shadow-md p-6 md:p-8 my-auto">
+            <div class="text-center mb-6">
+                <div id="result-icon" class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                    <i class="fa-solid fa-trophy"></i>
                 </div>
-                <div id="pass-fail-badge" class="inline-block px-4 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700">
-                    合格ライン（60%以上）達成！
-                </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-1">試験終了</h2>
+                <p class="text-slate-500 text-sm">結果と解説を確認してください。</p>
             </div>
 
-            <!-- 間違えた問題の情報 -->
-            <div id="wrong-summary" class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg max-w-md mx-auto text-left">
-                <div class="font-bold text-amber-800 text-sm mb-1 flex items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <span>復習が必要な問題: <strong id="wrong-count-text">0</strong>問</span>
+            <div class="bg-slate-50 rounded-xl p-5 mb-6 max-w-md mx-auto border border-slate-200 text-center">
+                <div class="text-xs text-slate-500 mb-1">スコア</div>
+                <div class="text-3xl font-extrabold text-indigo-600 mb-2">
+                    <span id="score-text">0</span> / <span id="total-text">0</span> 問
                 </div>
-                <p class="text-xs text-amber-700">間違えた問題だけをピックアップして再挑戦できます。</p>
+                <div id="pass-fail-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
+                    合格ライン達成
+                </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-3">
-                <button id="retry-wrong-btn" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-lg shadow transition text-base flex items-center justify-center">
-                    <i class="fa-solid fa-rotate-right mr-2"></i>間違えた問題だけに挑戦
+            <!-- アクションボタン -->
+            <div class="flex flex-col sm:flex-row justify-center gap-3 mb-8">
+                <button id="retry-wrong-btn" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-lg shadow transition text-sm flex items-center justify-center">
+                    <i class="fa-solid fa-rotate-right mr-2"></i>間違えた問題のみ解き直す (<span id="wrong-count-text">0</span>問)
                 </button>
-                <button id="restart-all-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-lg border border-slate-300 transition text-base">
+                <button id="restart-all-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-lg border border-slate-300 transition text-sm">
                     最初から全問解き直す
                 </button>
+            </div>
+
+            <!-- 結果・解説一覧 -->
+            <div class="border-t border-slate-200 pt-6">
+                <h3 class="font-bold text-lg text-slate-800 mb-4"><i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i>解答・解説一覧</h3>
+                <div id="result-list" class="space-y-4">
+                    <!-- JSで結果・解説を生成 -->
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- 問題一覧ナビゲーションモーダル -->
+    <!-- 問題一覧モーダル -->
     <div id="nav-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[80vh] flex flex-col">
             <div class="p-4 border-b border-slate-100 flex justify-between items-center">
-                <h3 class="font-bold text-slate-800">問題一覧・移動</h3>
+                <h3 class="font-bold text-slate-800">問題移動</h3>
                 <button id="close-modal-btn" class="text-slate-400 hover:text-slate-600 p-1">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <div class="p-4 overflow-y-auto custom-scrollbar flex-1">
-                <div id="modal-grid" class="grid grid-cols-5 sm:grid-cols-6 gap-2">
-                    <!-- 問題番号ボタンがJSで追加されます -->
-                </div>
-            </div>
-            <div class="p-3 border-t border-slate-100 text-xs text-slate-500 flex justify-around">
-                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span>正解</span>
-                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-rose-500 rounded-full inline-block"></span>不正解</span>
-                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-slate-200 rounded-full inline-block"></span>未回答</span>
+            <div class="p-4 overflow-y-auto flex-1">
+                <div id="modal-grid" class="grid grid-cols-5 sm:grid-cols-6 gap-2"></div>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Data & Logic -->
+    <!-- JavaScript -->
     <script>
-        // FP2級 学科試験 サンプル問題データ（13問＋拡張可能構造）
+        // 問題データ（ここに問題を追加していけます）
         const ALL_QUESTIONS = [
             {
                 id: 1,
@@ -198,7 +157,7 @@
                     "4. 税理士の登録を受けていないFPが、相続の相談に来た顧客の求めに応じ、顧客の具体的な相続税額の算出のために知り合いの税理士を紹介した。"
                 ],
                 answer: 0,
-                explanation: "【不適切】社会保険労務士資格のないFPが、有償で公的年金の裁定請求手続を代行することは社労士法で禁止されています（社労士独占業務）。"
+                explanation: "【不適切】社会保険労務士資格のないFPが、有償で公的年金の裁定請求手続を代行することは社労士法で禁止されています。"
             },
             {
                 id: 2,
@@ -250,121 +209,17 @@
                     "4. 加給年金対象者となる配偶者を有する者が老齢厚生年金の繰上げ支給を請求した場合、繰上げ支給の老齢厚生年金に繰り上げた月数に応じて減額された加給年金額が加算される。"
                 ],
                 answer: 3,
-                explanation: "【不適切】加給年金は老齢厚生年金を繰り上げても同時に繰り上げ支給されず、本来の65歳に達するまで支給されません（減額加算もされません）。"
-            },
-            {
-                id: 6,
-                category: "ライフプランニング",
-                question: "公的年金の遺族給付に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 遺族基礎年金を受給することができる遺族は、国民年金の被保険者等の死亡の当時、その者によって生計を維持され、かつ、所定の要件を満たす「子のある配偶者」または「子」である。",
-                    "2. 厚生年金保険の被保険者である夫が死亡し、子のない30歳未満の妻が遺族厚生年金の受給権を取得した場合、その妻に対する遺族厚生年金の支給期間は、最長で10年間である。",
-                    "3. 厚生年金保険の被保険者である夫が死亡し、子のない40歳以上65歳未満の妻が遺族厚生年金の受給権を取得した場合、妻が65歳に達するまでの間、妻に支給される遺族厚生年金に中高齢寡婦加算額が加算される。",
-                    "4. 国民年金の被保険者の死亡により、その者の遺族に遺族基礎年金が支給される場合、その者の遺族に死亡一時金は支給されない。"
-                ],
-                answer: 1,
-                explanation: "【不適切】30歳未満で子のない妻に対する遺族厚生年金の支給期間は「5年間」です（10年ではありません）。"
-            },
-            {
-                id: 7,
-                category: "ライフプランニング",
-                question: "国民年金基金に関する次の記述のうち、最も適切なものはどれか。",
-                options: [
-                    "1. 国民年金基金には、国民年金の第1号被保険者および第3号被保険者と、日本国内に住所を有する60歳以上65歳未満の国民年金の任意加入被保険者が加入することができる。",
-                    "2. 国民年金基金の加入員は、厚生年金保険の被保険者になるなどの所定の事由に該当したときに加入員の資格を喪失するが、自己の都合で任意に脱退することはできない。",
-                    "3. 国民年金基金への加入は口数制となっており、1口目は2種類の終身年金のなかから選択し、2口目以降は5種類の確定年金のなかから選択する。",
-                    "4. 国民年金基金の給付には、老齢年金、障害年金、遺族一時金がある。"
-                ],
-                answer: 1,
-                explanation: "【適切】国民年金基金は脱退手続による任意脱退が認められておらず、資格喪失事由（会社員になる等）に該当しない限り脱退できません。"
-            },
-            {
-                id: 8,
-                category: "ライフプランニング",
-                question: "公的年金に係る税金に関する次の記述のうち、最も適切なものはどれか。",
-                options: [
-                    "1. 老齢基礎年金および老齢厚生年金の支払の際に、所得税および復興特別所得税が源泉徴収される場合、その源泉徴収税率は10.21%である。",
-                    "2. 老齢基礎年金を受給権発生日から数年後に請求し、遡及して数年分の年金を一括して受給した場合、一括して受給した年金は、一時所得として所得税の課税対象となる。",
-                    "3. 厚生年金保険の被保険者が死亡したことにより、遺族が取得した遺族厚生年金の受給権に基づく年金給付は、相続または遺贈により取得したものとみなして相続税の課税対象となる。",
-                    "4. 老齢基礎年金および老齢厚生年金の受給者が死亡し、その者に支給されるべき年金給付のうち、まだ支給されていなかったもの(未支給年金)は、当該年金を受け取った遺族の一時所得として所得税の課税対象となる。"
-                ],
-                answer: 3,
-                explanation: "【適切】未支給年金を受け取った遺族は、遺族自身の一時所得として所得税の課税対象となります。"
-            },
-            {
-                id: 9,
-                category: "ライフプランニング",
-                question: "住宅ローンの一般的な特徴に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 住宅ローンの返済方法において、元利均等返済と元金均等返済を比較した場合、借入額や返済期間などの他の条件が同一であれば、総返済額は元利均等返済のほうが多くなる。",
-                    "2. 住宅ローンの一部繰上げ返済において、返済額軽減型と返済期間短縮型を比較した場合、繰上げ返済額や金利などの他の条件が同一であれば、利息の軽減効果は返済額軽減型のほうが大きくなる。",
-                    "3. 住宅ローンの一部繰上げ返済をする場合、取扱金融機関によって最低返済額や必要となる手数料が異なることがある。",
-                    "4. 住宅ローンの借換えに際して、現在借入れをしている金融機関の抵当権を抹消し、借換先の金融機関の抵当権を設定する場合、登録免許税等の諸費用が必要となる。"
-                ],
-                answer: 1,
-                explanation: "【不適切】同じ繰上げ返済額であれば、利息軽減効果は「返済期間短縮型」のほうが「返済額軽減型」よりも大きくなります。"
-            },
-            {
-                id: 10,
-                category: "ライフプランニング",
-                question: "X社の貸借対照表（資産合計20,000, 流動資産12,000, 固定資産8,000 / 流動負債1,500, 固定負債2,500, 株主資本16,000, 当期純利益800）に基づく財務分析に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. X社の自己資本比率は、80%である。",
-                    "2. X社の流動比率は、800%である。",
-                    "3. X社の固定長期適合率は、50%である。",
-                    "4. X社の自己資本当期純利益率は、5%である。"
-                ],
-                answer: 2,
-                explanation: "【不適切】固定長期適合率 ＝ 固定資産(8,000) ÷ [自己資本(16,000) ＋ 固定負債(2,500)] ＝ 8,000 ÷ 18,500 ≒ 43.2% となります（50%ではありません）。"
-            },
-            {
-                id: 11,
-                category: "リスク管理",
-                question: "生命保険の保険料等の一般的な仕組みに関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 責任準備金は、保険会社が将来の保険金等の支払のために、保険数理に基づいて算定し、積み立てる準備金である。",
-                    "2. 保険料のうち、将来の保険金等の支払財源となる純保険料は、予定死亡率と予定利率に基づいて計算される。",
-                    "3. 終身保険について、保険料の算定に用いられる予定利率が引き上げられた場合、新規契約の保険料は高くなる。",
-                    "4. 保険会社が実際に要した事業費が、保険料を算定する際に見込んでいた事業費よりも少なかった場合、費差益が生じる。"
-                ],
-                answer: 2,
-                explanation: "【不適切】予定利率が「引き上げられた」場合、運用による収益が見込めるため、新規契約の保険料は「安く（安価に）」なります。"
-            },
-            {
-                id: 12,
-                category: "リスク管理",
-                question: "生命保険の一般的な商品性に関する次の記述のうち、最も不適切なものはどれか。",
-                options: [
-                    "1. 逓減定期保険は、保険期間の経過に伴って所定の割合で保険料が逓減するが、保険金額は一定である。",
-                    "2. 収入保障保険の死亡保険金を一時金で受け取る場合の受取額は、年金形式で受け取る場合の受取総額よりも少ない。",
-                    "3. 低解約返戻金型終身保険では、他の契約条件が同一で低解約返戻金型ではない終身保険と比較して、保険料払込期間中の解約返戻金額が低く抑えられているため、割安な保険料が設定されている。",
-                    "4. 定期保険特約付終身保険 (更新型)では、定期保険特約を同額の保険金額で更新した場合、更新後の保険料は更新前の保険料よりも高くなる。"
-                ],
-                answer: 0,
-                explanation: "【不適切】逓減定期保険は、保険料は一定ですが「保険金額が」時間の経過とともに段階的に減少していく保険です。"
-            },
-            {
-                id: 13,
-                category: "リスク管理",
-                question: "個人年金保険の一般的な商品性に関する次の記述のうち、最も適切なものはどれか。",
-                options: [
-                    "1. 確定年金では、年金支払期間中に被保険者(=年金受取人)が死亡した場合、あらかじめ指定された受取人が既払込保険料相当額から被保険者に支払われた年金額を差し引いた金額を死亡保険金として受け取ることができる。",
-                    "2. 保証期間付終身年金の保険料は、他の契約条件が同一であれば、被保険者が男性のほうが女性よりも高くなる。",
-                    "3. 変額個人年金保険では、特別勘定における運用実績によって、将来受け取る年金額や解約返戻金額が変動する。",
-                    "4. 個人年金保険では、被保険者が保険料払込期間中に所定の高度障害状態に該当すると、以後の保険料の払込みが免除され、直ちに年金を受け取ることができる。"
-                ],
-                answer: 2,
-                explanation: "【適切】変額個人年金保険は特別勘定の運用実績に応じて年金額や解約返戻金額が変動します。"
+                explanation: "【不適切】加給年金は老齢厚生年金を繰り上げても同時に繰り上げ支給されず、本来の65歳に達するまで支給されません。"
             }
         ];
 
-        // アプリの状態管理変数
+        // 状態変数
         let currentQuestions = [...ALL_QUESTIONS];
         let currentIndex = 0;
-        let userAnswers = {}; // { questionId: selectedOptionIndex }
+        let userAnswers = {}; // { questionId: selectedIndex }
         let isRetryMode = false;
 
-        // DOM要素
+        // Element
         const startScreen = document.getElementById('start-screen');
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
@@ -378,135 +233,93 @@
         const retryWrongBtn = document.getElementById('retry-wrong-btn');
         const restartAllBtn = document.getElementById('restart-all-btn');
 
-        // イベントリスナーのセットアップ
         document.addEventListener('DOMContentLoaded', () => {
-            startBtn.addEventListener('click', startQuiz);
+            startBtn.addEventListener('click', () => startQuiz(false));
             prevBtn.addEventListener('click', goPrev);
             nextBtn.addEventListener('click', goNext);
             navModalBtn.addEventListener('click', openModal);
             closeModalBtn.addEventListener('click', closeModal);
-            retryWrongBtn.addEventListener('click', startRetryMode);
-            restartAllBtn.addEventListener('click', () => {
-                isRetryMode = false;
-                userAnswers = {};
-                startQuiz();
-            });
+            retryWrongBtn.addEventListener('click', () => startQuiz(true));
+            restartAllBtn.addEventListener('click', () => startQuiz(false));
         });
 
-        // クイズ開始
-        function startQuiz() {
+        function startQuiz(retryOnly = false) {
+            isRetryMode = retryOnly;
             startScreen.classList.add('hidden');
             resultScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
 
-            if (!isRetryMode) {
-                currentQuestions = [...ALL_QUESTIONS];
-                document.getElementById('current-mode-label').textContent = "通常モード";
-            } else {
+            if (isRetryMode) {
+                // 間違えた問題のみ抽出
+                const wrongIds = ALL_QUESTIONS.filter(q => userAnswers[q.id] !== q.answer).map(q => q.id);
+                currentQuestions = ALL_QUESTIONS.filter(q => wrongIds.includes(q.id));
+                // 解答リセット
+                wrongIds.forEach(id => delete userAnswers[id]);
                 document.getElementById('current-mode-label').textContent = "復習モード";
+            } else {
+                currentQuestions = [...ALL_QUESTIONS];
+                userAnswers = {};
+                document.getElementById('current-mode-label').textContent = "本番モード";
             }
 
             currentIndex = 0;
             renderQuestion();
         }
 
-        // 問題の描画
         function renderQuestion() {
             const q = currentQuestions[currentIndex];
-            
-            // ヘッダー・プログレス更新
-            const totalCount = currentQuestions.length;
+            const total = currentQuestions.length;
             const answeredCount = Object.keys(userAnswers).length;
-            document.getElementById('progress-text').textContent = `${answeredCount}/${ALL_QUESTIONS.length}`;
-            
-            const percent = Math.round(((currentIndex + 1) / totalCount) * 100);
-            document.getElementById('progress-bar').style.width = `${percent}%`;
-            document.getElementById('progress-percent').textContent = `${currentIndex + 1} / ${totalCount}`;
 
-            // 問題カード情報
+            document.getElementById('progress-text').textContent = `${answeredCount}/${currentQuestions.length}`;
+            document.getElementById('progress-percent').textContent = `${currentIndex + 1} / ${total}`;
+            document.getElementById('progress-bar').style.width = `${((currentIndex + 1) / total) * 100}%`;
+
             document.getElementById('question-number').textContent = `問 ${q.id}`;
             document.getElementById('question-category').textContent = q.category;
             document.getElementById('question-text').textContent = q.question;
 
-            // 復習バッジ
-            const retryBadge = document.getElementById('retry-badge');
-            if (isRetryMode) {
-                retryBadge.classList.remove('hidden');
-            } else {
-                retryBadge.classList.add('hidden');
-            }
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
 
-            // 選択肢作成
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-
-            const hasAnswered = userAnswers[q.id] !== undefined;
-            const selectedOpt = userAnswers[q.id];
+            const selected = userAnswers[q.id];
 
             q.options.forEach((optText, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-lg border transition text-sm flex items-start gap-3 ";
+                const isSelected = selected === idx;
                 
-                if (!hasAnswered) {
-                    btn.className += "border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50 bg-white text-slate-700";
-                    btn.onclick = () => selectOption(q.id, idx);
-                } else {
-                    if (idx === q.answer) {
-                        btn.className += "border-emerald-500 bg-emerald-50 text-emerald-900 font-medium";
-                    } else if (idx === selectedOpt) {
-                        btn.className += "border-rose-400 bg-rose-50 text-rose-900";
-                    } else {
-                        btn.className += "border-slate-200 bg-slate-50 text-slate-400 opacity-60";
-                    }
-                    btn.disabled = true;
-                }
+                btn.className = `w-full text-left p-4 rounded-lg border transition text-sm flex items-start gap-3 ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50 text-indigo-900 font-medium' 
+                        : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+                }`;
+
+                btn.onclick = () => selectOption(q.id, idx);
 
                 btn.innerHTML = `
                     <span class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
-                        hasAnswered && idx === q.answer ? 'border-emerald-600 bg-emerald-600 text-white' :
-                        hasAnswered && idx === selectedOpt ? 'border-rose-500 bg-rose-500 text-white' : 'border-slate-300'
+                        isSelected ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-300 text-slate-500'
                     }">
                         ${idx + 1}
                     </span>
                     <span class="flex-1">${optText}</span>
                 `;
-                optionsContainer.appendChild(btn);
+                container.appendChild(btn);
             });
 
-            // 解説エリアの表示制御
-            const expBox = document.getElementById('explanation-box');
-            const resStatus = document.getElementById('result-status');
-            const expText = document.getElementById('explanation-text');
-
-            if (hasAnswered) {
-                expBox.classList.remove('hidden');
-                const isCorrect = selectedOpt === q.answer;
-                if (isCorrect) {
-                    resStatus.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-circle-check mr-1.5"></i>正解！</span>`;
-                } else {
-                    resStatus.innerHTML = `<span class="text-rose-600"><i class="fa-solid fa-circle-xmark mr-1.5"></i>不正解... (正解: ${q.answer + 1})</span>`;
-                }
-                expText.textContent = q.explanation;
-            } else {
-                expBox.classList.add('hidden');
-            }
-
-            // ナビゲーションボタン状態
             prevBtn.disabled = currentIndex === 0;
-            if (currentIndex === totalCount - 1) {
+            if (currentIndex === total - 1) {
                 nextBtn.innerHTML = `結果を見る<i class="fa-solid fa-trophy ml-1.5"></i>`;
             } else {
                 nextBtn.innerHTML = `次へ<i class="fa-solid fa-chevron-right ml-1"></i>`;
             }
         }
 
-        // 回答選択ハンドラ
-        function selectOption(questionId, optionIndex) {
-            userAnswers[questionId] = optionIndex;
+        function selectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
             renderQuestion();
         }
 
-        // ページ移動
         function goPrev() {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -523,80 +336,68 @@
             }
         }
 
-        // 結果画面の表示
         function showResult() {
             quizScreen.classList.add('hidden');
             resultScreen.classList.remove('hidden');
 
             let score = 0;
-            let wrongQuestions = [];
+            let wrongCount = 0;
+            const resultList = document.getElementById('result-list');
+            resultList.innerHTML = '';
 
             ALL_QUESTIONS.forEach(q => {
-                if (userAnswers[q.id] === q.answer) {
-                    score++;
-                } else {
-                    wrongQuestions.push(q);
-                }
+                const userAns = userAnswers[q.id];
+                const isCorrect = userAns === q.answer;
+                if (isCorrect) score++;
+                else wrongCount++;
+
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-lg border ${isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'}`;
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-sm text-slate-700">問 ${q.id} (${q.category})</span>
+                        <span class="text-xs font-bold px-2 py-0.5 rounded ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                            ${isCorrect ? '正解' : '不正解'}
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-2 whitespace-pre-line">${q.question}</p>
+                    <div class="text-xs space-y-1 mb-3">
+                        <div class="${userAns === q.answer ? 'text-emerald-700 font-bold' : 'text-rose-600'}">
+                            あなたの回答: ${userAns !== undefined ? q.options[userAns] : '未回答'}
+                        </div>
+                        ${!isCorrect ? `<div class="text-emerald-700 font-bold">正解: ${q.options[q.answer]}</div>` : ''}
+                    </div>
+                    <div class="bg-white p-3 rounded border border-slate-200 text-xs text-slate-700 whitespace-pre-line">
+                        <span class="font-bold text-indigo-600 block mb-1">【解説】</span>
+                        ${q.explanation}
+                    </div>
+                `;
+                resultList.appendChild(card);
             });
 
-            const total = ALL_QUESTIONS.length;
-            const percentage = (score / total) * 100;
-
             document.getElementById('score-text').textContent = score;
-            document.getElementById('total-text').textContent = total;
-            document.getElementById('wrong-count-text').textContent = wrongQuestions.length;
+            document.getElementById('total-text').textContent = ALL_QUESTIONS.length;
+            document.getElementById('wrong-count-text').textContent = wrongCount;
 
-            const passBadge = document.getElementById('pass-fail-badge');
-            if (percentage >= 60) {
-                passBadge.className = "inline-block px-4 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700";
-                passBadge.textContent = `合格ライン（60%以上）達成！ (${Math.round(percentage)}%)`;
-            } else {
-                passBadge.className = "inline-block px-4 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700";
-                passBadge.textContent = `合格ライン未達 (${Math.round(percentage)}%)`;
-            }
-
-            if (wrongQuestions.length === 0) {
+            if (wrongCount === 0) {
                 retryWrongBtn.classList.add('hidden');
             } else {
                 retryWrongBtn.classList.remove('hidden');
             }
         }
 
-        // 間違えた問題だけ再挑戦
-        function startRetryMode() {
-            const wrongIds = ALL_QUESTIONS.filter(q => userAnswers[q.id] !== q.answer).map(q => q.id);
-            currentQuestions = ALL_QUESTIONS.filter(q => wrongIds.includes(q.id));
-            
-            // 間違えた問題の回答履歴をリセット
-            wrongIds.forEach(id => delete userAnswers[id]);
-
-            isRetryMode = true;
-            startQuiz();
-        }
-
-        // モーダル管理
         function openModal() {
             const grid = document.getElementById('modal-grid');
             grid.innerHTML = '';
 
             currentQuestions.forEach((q, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "p-2 rounded font-bold text-xs flex flex-col items-center justify-center h-10 transition ";
-                
-                const answered = userAnswers[q.id] !== undefined;
-                const isCorrect = userAnswers[q.id] === q.answer;
+                const isAnswered = userAnswers[q.id] !== undefined;
 
-                if (!answered) {
-                    btn.className += "bg-slate-100 text-slate-600 hover:bg-slate-200";
-                } else if (isCorrect) {
-                    btn.className += "bg-emerald-500 text-white";
-                } else {
-                    btn.className += "bg-rose-500 text-white";
-                }
-
-                if (idx === currentIndex) {
-                    btn.className += " ring-2 ring-indigo-600 ring-offset-1";
-                }
+                btn.className = `p-2 rounded font-bold text-xs flex items-center justify-center h-10 transition ${
+                    isAnswered ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                } ${idx === currentIndex ? 'ring-2 ring-indigo-900 ring-offset-1' : ''}`;
 
                 btn.textContent = `問${q.id}`;
                 btn.onclick = () => {
