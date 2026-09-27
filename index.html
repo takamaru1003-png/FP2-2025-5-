@@ -185,17 +185,17 @@
 
     <!-- JavaScript Data & Logic -->
     <script>
-        // 2025年5月 FP2級 学科試験 全60問データ
+        // FP2級 学科試験 サンプル問題データ（13問＋拡張可能構造）
         const ALL_QUESTIONS = [
             {
                 id: 1,
                 category: "ライフプランニング",
                 question: "ファイナンシャル・プランナー(以下、「FP」という)の顧客に対する行為に関する次の記述のうち、関連法規に照らし、最も不適切なものはどれか。",
                 options: [
-                    "社会保険労務士の登録を受けていないFPが、年金の相談に来た顧客の求めに応じ、公的年金の裁定請求手続を代行して報酬を受け取った。",
-                    "生命保険募集人の登録を受けていないFPが、ライフプランの相談に来た顧客の求めに応じ、ライフイベントに応じた生命保険の一般的な活用方法を説明した。",
-                    "金融商品取引業者の登録を受けていないFPが、資産運用の相談に来た顧客の求めに応じ、顧客の投資判断材料となる景気動向や企業業績に関する情報を提供した。",
-                    "税理士の登録を受けていないFPが、相続の相談に来た顧客の求めに応じ、顧客の具体的な相続税額の算出のために知り合いの税理士を紹介した。"
+                    "1. 社会保険労務士の登録を受けていないFPが、年金の相談に来た顧客の求めに応じ、公的年金の裁定請求手続を代行して報酬を受け取った。",
+                    "2. 生命保険募集人の登録を受けていないFPが、ライフプランの相談に来た顧客の求めに応じ、ライフイベントに応じた生命保険の一般的な活用方法を説明した。",
+                    "3. 金融商品取引業者の登録を受けていないFPが、資産運用の相談に来た顧客の求めに応じ、顧客の投資判断材料となる景気動向や企業業績に関する情報を提供した。",
+                    "4. 税理士の登録を受けていないFPが、相続の相談に来た顧客の求めに応じ、顧客の具体的な相続税額の算出のために知り合いの税理士を紹介した。"
                 ],
                 answer: 0,
                 explanation: "【不適切】社会保険労務士資格のないFPが、有償で公的年金の裁定請求手続を代行することは社労士法で禁止されています（社労士独占業務）。"
@@ -205,10 +205,10 @@
                 category: "ライフプランニング",
                 question: "全国健康保険協会管掌健康保険 (協会けんぽ)の被保険者に関する次の記述の空欄(ア)～(ウ)にあてはまる語句の組合せとして、最も適切なものはどれか。\n\n特定適用事業所に使用される者のうち、1週間の所定労働時間または1ヵ月間の所定労働日数が同一の事業所に使用される通常の労働者の(ア) 未満である短時間労働者に該当し、かつ、次のいずれかに該当する者は、原則として、被保険者とならない。\n(1) 1週間の所定労働時間が(イ) 未満である者\n(2) 所定内賃金が月額 (ウ) 未満である者\n(3) 学生である者",
                 options: [
-                    "(ア) 3分の2　(イ) 20時間　(ウ) 5万8,000円",
-                    "(ア) 3分の2　(イ) 25時間　(ウ) 8万8,000円",
-                    "(ア) 4分の3　(イ) 20時間　(ウ) 8万8,000円",
-                    "(ア) 4分の3　(イ) 25時間　(ウ) 5万8,000円"
+                    "1. (ア) 3分の2 (イ) 20時間 (ウ) 5万8,000円",
+                    "2. (ア) 3分の2 (イ) 25時間 (ウ) 8万8,000円",
+                    "3. (ア) 4分の3 (イ) 20時間 (ウ) 8万8,000円",
+                    "4. (ア) 4分の3 (イ) 25時間 (ウ) 5万8,000円"
                 ],
                 answer: 2,
                 explanation: "【適切】短時間労働者の社会保険適用拡大要件は、通常労働者の「4分の3」未満であって、「週20時間未満」「月額賃金8万8,000円未満」「学生である」等に該当する場合は適用除外となります。"
@@ -218,10 +218,10 @@
                 category: "ライフプランニング",
                 question: "労働者災害補償保険に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "労働者災害補償保険の適用を受ける労働者には、雇用形態がアルバイトやパートタイマーである者も含まれる。",
-                    "労働者災害補償保険の保険料の算定に用いられる労災保険率は、事業の規模によって災害の発生率が異なることから、適用事業に従事する労働者数に応じて定められている。",
-                    "労働者の業務上の傷病が治癒したときに、身体に一定の障害が残り、その障害の程度が所定の障害等級に該当する場合、障害補償給付が支給される。",
-                    "業務災害により労働者が死亡した場合、対象となる遺族に対し、遺族補償給付として遺族補償年金または遺族補償一時金が支給される。"
+                    "1. 労働者災害補償保険の適用を受ける労働者には、雇用形態がアルバイトやパートタイマーである者も含まれる。",
+                    "2. 労働者災害補償保険の保険料の算定に用いられる労災保険率は、事業の規模によって災害の発生率が異なることから、適用事業に従事する労働者数に応じて定められている。",
+                    "3. 労働者の業務上の傷病が治癒したときに、身体に一定の障害が残り、その障害の程度が所定の障害等級に該当する場合、障害補償給付が支給される。",
+                    "4. 業務災害により労働者が死亡した場合、対象となる遺族に対し、遺族補償給付として遺族補償年金または遺族補償一時金が支給される。"
                 ],
                 answer: 1,
                 explanation: "【不適切】労災保険率は、労働者数ではなく「事業の種類（業種）」ごとの災害発生率に応じて定められています。"
@@ -231,10 +231,10 @@
                 category: "ライフプランニング",
                 question: "国民年金の保険料に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "国民年金の第1号被保険者は、国民年金の保険料の納付を免除または猶予されている者および国民年金基金の加入員等を除き、月額400円の付加保険料を納付することができる。",
-                    "産前産後期間の保険料免除制度により国民年金の保険料の納付が免除された期間は、保険料納付済期間として老齢基礎年金の年金額に反映される。",
-                    "国民年金の保険料免除期間に係る保険料を追納する場合、追納すべき額は、追納する時期にかかわらず、免除された時点における保険料の額となる。",
-                    "国民年金の保険料を前納した第1号被保険者が、その前納に係る期間の経過前に第2号被保険者となった場合、前納した保険料のうち、未経過期間に係るものの還付を受けることができる。"
+                    "1. 国民年金の第1号被保険者は、国民年金の保険料の納付を免除または猶予されている者および国民年金基金の加入員等を除き、月額400円の付加保険料を納付することができる。",
+                    "2. 産前産後期間の保険料免除制度により国民年金の保険料の納付が免除された期間は、保険料納付済期間として老齢基礎年金の年金額に反映される。",
+                    "3. 国民年金の保険料免除期間に係る保険料を追納する場合、追納すべき額は、追納する時期にかかわらず、免除された時点における保険料の額となる。",
+                    "4. 国民年金の保険料を前納した第1号被保険者が、その前納に係る期間の経過前に第2号被保険者となった場合、前納した保険料のうち、未経過期間に係るものの還付を受けることができる。"
                 ],
                 answer: 2,
                 explanation: "【不適切】追納する場合、免除を受けた年度の翌々年度以降（3年目以降）に追納するときは、当時の保険料額に加算額が上乗せされます。"
@@ -244,10 +244,10 @@
                 category: "ライフプランニング",
                 question: "公的年金の老齢給付の繰上げ支給に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "老齢厚生年金の繰上げ支給を請求することができる者が老齢基礎年金の繰上げ支給を請求する場合、老齢厚生年金の繰上げ支給の請求も同時に行わなければならない。",
-                    "1962年4月2日以後生まれの者が、62歳6ヵ月に達した月に老齢基礎年金の繰上げ支給を請求した場合、老齢基礎年金の減額率は12%となる。",
-                    "寡婦年金を受給している者が老齢基礎年金の繰上げ支給を請求した場合、寡婦年金の受給権が消滅する。",
-                    "加給年金対象者となる配偶者を有する者が老齢厚生年金の繰上げ支給を請求した場合、繰上げ支給の老齢厚生年金に繰り上げた月数に応じて減額された加給年金額が加算される。"
+                    "1. 老齢厚生年金の繰上げ支給を請求することができる者が老齢基礎年金の繰上げ支給を請求する場合、老齢厚生年金の繰上げ支給の請求も同時に行わなければならない。",
+                    "2. 1962年4月2日以後生まれの者が、62歳6ヵ月に達した月に老齢基礎年金の繰上げ支給を請求した場合、老齢基礎年金の減額率は12%となる。",
+                    "3. 寡婦年金を受給している者が老齢基礎年金の繰上げ支給を請求した場合、寡婦年金の受給権が消滅する。",
+                    "4. 加給年金対象者となる配偶者を有する者が老齢厚生年金の繰上げ支給を請求した場合、繰上げ支給の老齢厚生年金に繰り上げた月数に応じて減額された加給年金額が加算される。"
                 ],
                 answer: 3,
                 explanation: "【不適切】加給年金は老齢厚生年金を繰り上げても同時に繰り上げ支給されず、本来の65歳に達するまで支給されません（減額加算もされません）。"
@@ -257,10 +257,10 @@
                 category: "ライフプランニング",
                 question: "公的年金の遺族給付に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "遺族基礎年金を受給することができる遺族は、国民年金の被保険者等の死亡の当時、その者によって生計を維持され、かつ、所定の要件を満たす「子のある配偶者」または「子」である。",
-                    "厚生年金保険の被保険者である夫が死亡し、子のない30歳未満の妻が遺族厚生年金の受給権を取得した場合、その妻に対する遺族厚生年金の支給期間は、最長で10年間である。",
-                    "厚生年金保険の被保険者である夫が死亡し、子のない40歳以上65歳未満の妻が遺族厚生年金の受給権を取得した場合、妻が65歳に達するまでの間、妻に支給される遺族厚生年金に中高齢寡婦加算額が加算される。",
-                    "国民年金の被保険者の死亡により、その者の遺族に遺族基礎年金が支給される場合、その者の遺族に死亡一時金は支給されない。"
+                    "1. 遺族基礎年金を受給することができる遺族は、国民年金の被保険者等の死亡の当時、その者によって生計を維持され、かつ、所定の要件を満たす「子のある配偶者」または「子」である。",
+                    "2. 厚生年金保険の被保険者である夫が死亡し、子のない30歳未満の妻が遺族厚生年金の受給権を取得した場合、その妻に対する遺族厚生年金の支給期間は、最長で10年間である。",
+                    "3. 厚生年金保険の被保険者である夫が死亡し、子のない40歳以上65歳未満の妻が遺族厚生年金の受給権を取得した場合、妻が65歳に達するまでの間、妻に支給される遺族厚生年金に中高齢寡婦加算額が加算される。",
+                    "4. 国民年金の被保険者の死亡により、その者の遺族に遺族基礎年金が支給される場合、その者の遺族に死亡一時金は支給されない。"
                 ],
                 answer: 1,
                 explanation: "【不適切】30歳未満で子のない妻に対する遺族厚生年金の支給期間は「5年間」です（10年ではありません）。"
@@ -270,10 +270,10 @@
                 category: "ライフプランニング",
                 question: "国民年金基金に関する次の記述のうち、最も適切なものはどれか。",
                 options: [
-                    "国民年金基金には、国民年金の第1号被保険者および第3号被保険者と、日本国内に住所を有する60歳以上65歳未満の国民年金の任意加入被保険者が加入することができる。",
-                    "国民年金基金の加入員は、厚生年金保険の被保険者になるなどの所定の事由に該当したときに加入員の資格を喪失するが、自己の都合で任意に脱退することはできない。",
-                    "国民年金基金への加入は口数制となっており、1口目は2種類の終身年金のなかから選択し、2口目以降は5種類の確定年金のなかから選択する。",
-                    "国民年金基金の給付には、老齢年金、障害年金、遺族一時金がある。"
+                    "1. 国民年金基金には、国民年金の第1号被保険者および第3号被保険者と、日本国内に住所を有する60歳以上65歳未満の国民年金の任意加入被保険者が加入することができる。",
+                    "2. 国民年金基金の加入員は、厚生年金保険の被保険者になるなどの所定の事由に該当したときに加入員の資格を喪失するが、自己の都合で任意に脱退することはできない。",
+                    "3. 国民年金基金への加入は口数制となっており、1口目は2種類の終身年金のなかから選択し、2口目以降は5種類の確定年金のなかから選択する。",
+                    "4. 国民年金基金の給付には、老齢年金、障害年金、遺族一時金がある。"
                 ],
                 answer: 1,
                 explanation: "【適切】国民年金基金は脱退手続による任意脱退が認められておらず、資格喪失事由（会社員になる等）に該当しない限り脱退できません。"
@@ -283,10 +283,10 @@
                 category: "ライフプランニング",
                 question: "公的年金に係る税金に関する次の記述のうち、最も適切なものはどれか。",
                 options: [
-                    "老齢基礎年金および老齢厚生年金の支払の際に、所得税および復興特別所得税が源泉徴収される場合、その源泉徴収税率は10.21%である。",
-                    "老齢基礎年金を受給権発生日から数年後に請求し、遡及して数年分の年金を一括して受給した場合、一括して受給した年金は、一時所得として所得税の課税対象となる。",
-                    "厚生年金保険の被保険者が死亡したことにより、遺族が取得した遺族厚生年金の受給権に基づく年金給付は、相続または遺贈により取得したものとみなして相続税の課税対象となる。",
-                    "老齢基礎年金および老齢厚生年金の受給者が死亡し、その者に支給されるべき年金給付のうち、まだ支給されていなかったもの(未支給年金)は、当該年金を受け取った遺族の一時所得として所得税の課税対象となる。"
+                    "1. 老齢基礎年金および老齢厚生年金の支払の際に、所得税および復興特別所得税が源泉徴収される場合、その源泉徴収税率は10.21%である。",
+                    "2. 老齢基礎年金を受給権発生日から数年後に請求し、遡及して数年分の年金を一括して受給した場合、一括して受給した年金は、一時所得として所得税の課税対象となる。",
+                    "3. 厚生年金保険の被保険者が死亡したことにより、遺族が取得した遺族厚生年金の受給権に基づく年金給付は、相続または遺贈により取得したものとみなして相続税の課税対象となる。",
+                    "4. 老齢基礎年金および老齢厚生年金の受給者が死亡し、その者に支給されるべき年金給付のうち、まだ支給されていなかったもの(未支給年金)は、当該年金を受け取った遺族の一時所得として所得税の課税対象となる。"
                 ],
                 answer: 3,
                 explanation: "【適切】未支給年金を受け取った遺族は、遺族自身の一時所得として所得税の課税対象となります。"
@@ -296,10 +296,10 @@
                 category: "ライフプランニング",
                 question: "住宅ローンの一般的な特徴に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "住宅ローンの返済方法において、元利均等返済と元金均等返済を比較した場合、借入額や返済期間などの他の条件が同一であれば、総返済額は元利均等返済のほうが多くなる。",
-                    "住宅ローンの一部繰上げ返済において、返済額軽減型と返済期間短縮型を比較した場合、繰上げ返済額や金利などの他の条件が同一であれば、利息の軽減効果は返済額軽減型のほうが大きくなる。",
-                    "住宅ローンの一部繰上げ返済をする場合、取扱金融機関によって最低返済額や必要となる手数料が異なることがある。",
-                    "住宅ローンの借換えに際して、現在借入れをしている金融機関の抵当権を抹消し、借換先の金融機関の抵当権を設定する場合、登録免許税等の諸費用が必要となる。"
+                    "1. 住宅ローンの返済方法において、元利均等返済と元金均等返済を比較した場合、借入額や返済期間などの他の条件が同一であれば、総返済額は元利均等返済のほうが多くなる。",
+                    "2. 住宅ローンの一部繰上げ返済において、返済額軽減型と返済期間短縮型を比較した場合、繰上げ返済額や金利などの他の条件が同一であれば、利息の軽減効果は返済額軽減型のほうが大きくなる。",
+                    "3. 住宅ローンの一部繰上げ返済をする場合、取扱金融機関によって最低返済額や必要となる手数料が異なることがある。",
+                    "4. 住宅ローンの借換えに際して、現在借入れをしている金融機関の抵当権を抹消し、借換先の金融機関の抵当権を設定する場合、登録免許税等の諸費用が必要となる。"
                 ],
                 answer: 1,
                 explanation: "【不適切】同じ繰上げ返済額であれば、利息軽減効果は「返済期間短縮型」のほうが「返済額軽減型」よりも大きくなります。"
@@ -309,10 +309,10 @@
                 category: "ライフプランニング",
                 question: "X社の貸借対照表（資産合計20,000, 流動資産12,000, 固定資産8,000 / 流動負債1,500, 固定負債2,500, 株主資本16,000, 当期純利益800）に基づく財務分析に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "X社の自己資本比率は、80%である。",
-                    "X社の流動比率は、800%である。",
-                    "X社の固定長期適合率は、50%である。",
-                    "X社の自己資本当期純利益率は、5%である。"
+                    "1. X社の自己資本比率は、80%である。",
+                    "2. X社の流動比率は、800%である。",
+                    "3. X社の固定長期適合率は、50%である。",
+                    "4. X社の自己資本当期純利益率は、5%である。"
                 ],
                 answer: 2,
                 explanation: "【不適切】固定長期適合率 ＝ 固定資産(8,000) ÷ [自己資本(16,000) ＋ 固定負債(2,500)] ＝ 8,000 ÷ 18,500 ≒ 43.2% となります（50%ではありません）。"
@@ -322,10 +322,10 @@
                 category: "リスク管理",
                 question: "生命保険の保険料等の一般的な仕組みに関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "責任準備金は、保険会社が将来の保険金等の支払のために、保険数理に基づいて算定し、積み立てる準備金である。",
-                    "保険料のうち、将来の保険金等の支払財源となる純保険料は、予定死亡率と予定利率に基づいて計算される。",
-                    "終身保険について、保険料の算定に用いられる予定利率が引き上げられた場合、新規契約の保険料は高くなる。",
-                    "保険会社が実際に要した事業費が、保険料を算定する際に見込んでいた事業費よりも少なかった場合、費差益が生じる。"
+                    "1. 責任準備金は、保険会社が将来の保険金等の支払のために、保険数理に基づいて算定し、積み立てる準備金である。",
+                    "2. 保険料のうち、将来の保険金等の支払財源となる純保険料は、予定死亡率と予定利率に基づいて計算される。",
+                    "3. 終身保険について、保険料の算定に用いられる予定利率が引き上げられた場合、新規契約の保険料は高くなる。",
+                    "4. 保険会社が実際に要した事業費が、保険料を算定する際に見込んでいた事業費よりも少なかった場合、費差益が生じる。"
                 ],
                 answer: 2,
                 explanation: "【不適切】予定利率が「引き上げられた」場合、運用による収益が見込めるため、新規契約の保険料は「安く（安価に）」なります。"
@@ -335,10 +335,10 @@
                 category: "リスク管理",
                 question: "生命保険の一般的な商品性に関する次の記述のうち、最も不適切なものはどれか。",
                 options: [
-                    "逓減定期保険は、保険期間の経過に伴って所定の割合で保険料が逓減するが、保険金額は一定である。",
-                    "収入保障保険の死亡保険金を一時金で受け取る場合の受取額は、年金形式で受け取る場合の受取総額よりも少ない。",
-                    "低解約返戻金型終身保険では、他の契約条件が同一で低解約返戻金型ではない終身保険と比較して、保険料払込期間中の解約返戻金額が低く抑えられているため、割安な保険料が設定されている。",
-                    "定期保険特約付終身保険 (更新型)では、定期保険特約を同額の保険金額で更新した場合、更新後の保険料は更新前の保険料よりも高くなる。"
+                    "1. 逓減定期保険は、保険期間の経過に伴って所定の割合で保険料が逓減するが、保険金額は一定である。",
+                    "2. 収入保障保険の死亡保険金を一時金で受け取る場合の受取額は、年金形式で受け取る場合の受取総額よりも少ない。",
+                    "3. 低解約返戻金型終身保険では、他の契約条件が同一で低解約返戻金型ではない終身保険と比較して、保険料払込期間中の解約返戻金額が低く抑えられているため、割安な保険料が設定されている。",
+                    "4. 定期保険特約付終身保険 (更新型)では、定期保険特約を同額の保険金額で更新した場合、更新後の保険料は更新前の保険料よりも高くなる。"
                 ],
                 answer: 0,
                 explanation: "【不適切】逓減定期保険は、保険料は一定ですが「保険金額が」時間の経過とともに段階的に減少していく保険です。"
@@ -348,14 +348,271 @@
                 category: "リスク管理",
                 question: "個人年金保険の一般的な商品性に関する次の記述のうち、最も適切なものはどれか。",
                 options: [
-                    "確定年金では、年金支払期間中に被保険者(=年金受取人)が死亡した場合、あらかじめ指定された受取人が既払込保険料相当額から被保険者に支払われた年金額を差し引いた金額を死亡保険金として受け取ることができる。",
-                    "保証期間付終身年金の保険料は、他の契約条件が同一であれば、被保険者が男性のほうが女性よりも高くなる。",
-                    "変額個人年金保険では、特別勘定における運用実績によって、将来受け取る年金額や解約返戻金額が変動する。",
-                    "個人年金保険では、被保険者が保険料払込期間中に所定の高度障害状態に該当すると、以後の保険料の払込みが免除され、直ちに年金を受け取ることができる。"
+                    "1. 確定年金では、年金支払期間中に被保険者(=年金受取人)が死亡した場合、あらかじめ指定された受取人が既払込保険料相当額から被保険者に支払われた年金額を差し引いた金額を死亡保険金として受け取ることができる。",
+                    "2. 保証期間付終身年金の保険料は、他の契約条件が同一であれば、被保険者が男性のほうが女性よりも高くなる。",
+                    "3. 変額個人年金保険では、特別勘定における運用実績によって、将来受け取る年金額や解約返戻金額が変動する。",
+                    "4. 個人年金保険では、被保険者が保険料払込期間中に所定の高度障害状態に該当すると、以後の保険料の払込みが免除され、直ちに年金を受け取ることができる。"
                 ],
                 answer: 2,
                 explanation: "【適切】変額個人年金保険は特別勘定の運用実績に応じて年金額や解約返戻金額が変動します。"
-            },
-            {
-                id: 14,
-                categor
+            }
+        ];
+
+        // アプリの状態管理変数
+        let currentQuestions = [...ALL_QUESTIONS];
+        let currentIndex = 0;
+        let userAnswers = {}; // { questionId: selectedOptionIndex }
+        let isRetryMode = false;
+
+        // DOM要素
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const navModal = document.getElementById('nav-modal');
+
+        const startBtn = document.getElementById('start-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const navModalBtn = document.getElementById('nav-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const retryWrongBtn = document.getElementById('retry-wrong-btn');
+        const restartAllBtn = document.getElementById('restart-all-btn');
+
+        // イベントリスナーのセットアップ
+        document.addEventListener('DOMContentLoaded', () => {
+            startBtn.addEventListener('click', startQuiz);
+            prevBtn.addEventListener('click', goPrev);
+            nextBtn.addEventListener('click', goNext);
+            navModalBtn.addEventListener('click', openModal);
+            closeModalBtn.addEventListener('click', closeModal);
+            retryWrongBtn.addEventListener('click', startRetryMode);
+            restartAllBtn.addEventListener('click', () => {
+                isRetryMode = false;
+                userAnswers = {};
+                startQuiz();
+            });
+        });
+
+        // クイズ開始
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+
+            if (!isRetryMode) {
+                currentQuestions = [...ALL_QUESTIONS];
+                document.getElementById('current-mode-label').textContent = "通常モード";
+            } else {
+                document.getElementById('current-mode-label').textContent = "復習モード";
+            }
+
+            currentIndex = 0;
+            renderQuestion();
+        }
+
+        // 問題の描画
+        function renderQuestion() {
+            const q = currentQuestions[currentIndex];
+            
+            // ヘッダー・プログレス更新
+            const totalCount = currentQuestions.length;
+            const answeredCount = Object.keys(userAnswers).length;
+            document.getElementById('progress-text').textContent = `${answeredCount}/${ALL_QUESTIONS.length}`;
+            
+            const percent = Math.round(((currentIndex + 1) / totalCount) * 100);
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-percent').textContent = `${currentIndex + 1} / ${totalCount}`;
+
+            // 問題カード情報
+            document.getElementById('question-number').textContent = `問 ${q.id}`;
+            document.getElementById('question-category').textContent = q.category;
+            document.getElementById('question-text').textContent = q.question;
+
+            // 復習バッジ
+            const retryBadge = document.getElementById('retry-badge');
+            if (isRetryMode) {
+                retryBadge.classList.remove('hidden');
+            } else {
+                retryBadge.classList.add('hidden');
+            }
+
+            // 選択肢作成
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const hasAnswered = userAnswers[q.id] !== undefined;
+            const selectedOpt = userAnswers[q.id];
+
+            q.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-lg border transition text-sm flex items-start gap-3 ";
+                
+                if (!hasAnswered) {
+                    btn.className += "border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50 bg-white text-slate-700";
+                    btn.onclick = () => selectOption(q.id, idx);
+                } else {
+                    if (idx === q.answer) {
+                        btn.className += "border-emerald-500 bg-emerald-50 text-emerald-900 font-medium";
+                    } else if (idx === selectedOpt) {
+                        btn.className += "border-rose-400 bg-rose-50 text-rose-900";
+                    } else {
+                        btn.className += "border-slate-200 bg-slate-50 text-slate-400 opacity-60";
+                    }
+                    btn.disabled = true;
+                }
+
+                btn.innerHTML = `
+                    <span class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
+                        hasAnswered && idx === q.answer ? 'border-emerald-600 bg-emerald-600 text-white' :
+                        hasAnswered && idx === selectedOpt ? 'border-rose-500 bg-rose-500 text-white' : 'border-slate-300'
+                    }">
+                        ${idx + 1}
+                    </span>
+                    <span class="flex-1">${optText}</span>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+
+            // 解説エリアの表示制御
+            const expBox = document.getElementById('explanation-box');
+            const resStatus = document.getElementById('result-status');
+            const expText = document.getElementById('explanation-text');
+
+            if (hasAnswered) {
+                expBox.classList.remove('hidden');
+                const isCorrect = selectedOpt === q.answer;
+                if (isCorrect) {
+                    resStatus.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-circle-check mr-1.5"></i>正解！</span>`;
+                } else {
+                    resStatus.innerHTML = `<span class="text-rose-600"><i class="fa-solid fa-circle-xmark mr-1.5"></i>不正解... (正解: ${q.answer + 1})</span>`;
+                }
+                expText.textContent = q.explanation;
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            // ナビゲーションボタン状態
+            prevBtn.disabled = currentIndex === 0;
+            if (currentIndex === totalCount - 1) {
+                nextBtn.innerHTML = `結果を見る<i class="fa-solid fa-trophy ml-1.5"></i>`;
+            } else {
+                nextBtn.innerHTML = `次へ<i class="fa-solid fa-chevron-right ml-1"></i>`;
+            }
+        }
+
+        // 回答選択ハンドラ
+        function selectOption(questionId, optionIndex) {
+            userAnswers[questionId] = optionIndex;
+            renderQuestion();
+        }
+
+        // ページ移動
+        function goPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function goNext() {
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        // 結果画面の表示
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            let score = 0;
+            let wrongQuestions = [];
+
+            ALL_QUESTIONS.forEach(q => {
+                if (userAnswers[q.id] === q.answer) {
+                    score++;
+                } else {
+                    wrongQuestions.push(q);
+                }
+            });
+
+            const total = ALL_QUESTIONS.length;
+            const percentage = (score / total) * 100;
+
+            document.getElementById('score-text').textContent = score;
+            document.getElementById('total-text').textContent = total;
+            document.getElementById('wrong-count-text').textContent = wrongQuestions.length;
+
+            const passBadge = document.getElementById('pass-fail-badge');
+            if (percentage >= 60) {
+                passBadge.className = "inline-block px-4 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700";
+                passBadge.textContent = `合格ライン（60%以上）達成！ (${Math.round(percentage)}%)`;
+            } else {
+                passBadge.className = "inline-block px-4 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700";
+                passBadge.textContent = `合格ライン未達 (${Math.round(percentage)}%)`;
+            }
+
+            if (wrongQuestions.length === 0) {
+                retryWrongBtn.classList.add('hidden');
+            } else {
+                retryWrongBtn.classList.remove('hidden');
+            }
+        }
+
+        // 間違えた問題だけ再挑戦
+        function startRetryMode() {
+            const wrongIds = ALL_QUESTIONS.filter(q => userAnswers[q.id] !== q.answer).map(q => q.id);
+            currentQuestions = ALL_QUESTIONS.filter(q => wrongIds.includes(q.id));
+            
+            // 間違えた問題の回答履歴をリセット
+            wrongIds.forEach(id => delete userAnswers[id]);
+
+            isRetryMode = true;
+            startQuiz();
+        }
+
+        // モーダル管理
+        function openModal() {
+            const grid = document.getElementById('modal-grid');
+            grid.innerHTML = '';
+
+            currentQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "p-2 rounded font-bold text-xs flex flex-col items-center justify-center h-10 transition ";
+                
+                const answered = userAnswers[q.id] !== undefined;
+                const isCorrect = userAnswers[q.id] === q.answer;
+
+                if (!answered) {
+                    btn.className += "bg-slate-100 text-slate-600 hover:bg-slate-200";
+                } else if (isCorrect) {
+                    btn.className += "bg-emerald-500 text-white";
+                } else {
+                    btn.className += "bg-rose-500 text-white";
+                }
+
+                if (idx === currentIndex) {
+                    btn.className += " ring-2 ring-indigo-600 ring-offset-1";
+                }
+
+                btn.textContent = `問${q.id}`;
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    renderQuestion();
+                    closeModal();
+                };
+                grid.appendChild(btn);
+            });
+
+            navModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            navModal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
